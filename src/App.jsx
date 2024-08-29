@@ -19,7 +19,7 @@ function App() {
 
   const incrCount = () => {
     if (filledCart) return;
-    setCount((curr) => (curr < 3 ? curr + 1 : curr));
+    setCount((curr) => (curr < 10 ? curr + 1 : curr));
   };
 
   const decrCount = () => {

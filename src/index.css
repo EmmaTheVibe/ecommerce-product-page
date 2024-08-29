@@ -70,7 +70,7 @@ h1 {
   cursor: pointer;
   position: relative;
   transition: color 0.3s ease;
-  font-weight: 700;
+  font-weight: 400;
   color: hsl(219, 9%, 45%);
 }
 
