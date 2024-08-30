@@ -9,17 +9,6 @@ export default function ImageCard({
   id = "",
   children,
 }) {
-  const nextImage = () => {
-    if (selectedId < 3) {
-      setSelectedId((curr) => curr + 1);
-    }
-  };
-  const prevImage = () => {
-    if (selectedId > 0) {
-      setSelectedId((curr) => curr - 1);
-    }
-  };
-
   const images = [
     {
       id: 0,
@@ -47,10 +36,34 @@ export default function ImageCard({
     },
   ];
 
+  const nextImage = () => {
+    setSelectedId((curr) => {
+      if (curr === images.length - 1) return 0;
+      return curr + 1;
+    });
+  };
+  const prevImage = () => {
+    setSelectedId((curr) => {
+      if (curr === 0) return images.length - 1;
+      return curr - 1;
+    });
+  };
+
   return (
     <div className="image-card" id={id}>
       <div className="main-image" onClick={handleOpen}>
-        <img className="mainimg" src={images[selectedId].picUrl} alt="" />
+        <div className="carousel">
+          {images.map((image) => (
+            <img
+              key={image.id}
+              className="mainimg"
+              src={image.picUrl}
+              style={{ translate: `${-100 * selectedId}%` }}
+              alt=""
+            />
+          ))}
+        </div>
+
         {showSlider ? (
           <Slider
             selectedId={selectedId}
