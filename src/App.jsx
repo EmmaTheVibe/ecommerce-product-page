@@ -7,6 +7,12 @@ import Button from "./Button";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Cart from "./Cart";
 import DrawerTab from "./DrawerTab";
+import PopUp from "./PopUp";
+import Slide from "@mui/material/Slide";
+
+function SlideTransition(props) {
+  return <Slide {...props} direction="up" />;
+}
 
 function App() {
   const matches = useMediaQuery("(max-width: 875px)");
@@ -16,6 +22,10 @@ function App() {
   const [showCart, setShowCart] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [popUp, setPopUp] = useState({
+    open: false,
+    Transition: SlideTransition,
+  });
 
   const incrCount = () => {
     if (filledCart) return;
@@ -41,6 +51,10 @@ function App() {
 
   const fillCart = () => {
     setFilledCart(true);
+    setPopUp({
+      ...popUp,
+      open: true,
+    });
   };
   return (
     <section className="main">
@@ -139,6 +153,7 @@ function App() {
           </div>
         </div>
       </div>
+      <PopUp popUp={popUp} setPopUp={setPopUp} matches={matches} />
     </section>
   );
 }

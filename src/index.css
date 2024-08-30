@@ -295,8 +295,6 @@ h2 {
   width: 310px;
   background-color: #fff;
   border-radius: 10px;
-
-  /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
   box-shadow: 2px 18px 30px 1px rgba(29, 32, 37, 0.2);
   position: absolute;
   top: 90%;
